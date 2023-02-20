@@ -36,16 +36,34 @@
   }
 
   &-title {
-    --border: 2px dashed var(--accent);
+    --border: 3px dotted var(--accent);
     position: relative;
     color: var(--accent);
     margin: 0 0 15px;
     padding-bottom: 15px;
     border-bottom: var(--border);
     font-weight: normal;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      display: block;
+      width: 100%;
+      border-bottom: var(--border);
+    }
 
     a {
       text-decoration: none;
+      display: inline-block;
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 1rem;
+        margin-left: 5px;
+        background-color: var(--accent);
+        animation: blink 1.5s linear infinite;
+      }
     }
   }
 
@@ -131,5 +149,19 @@
 
   .post-tag {
     text-decoration: underline;
+  }
+}
+
+@keyframes blink {
+  0% {
+      opacity: 0;
+  }
+
+  50% {
+      opacity: 0.7;
+  }
+
+  100% {
+      opacity: 0;
   }
 }
